@@ -48,4 +48,48 @@ End Sub
 ```
 
 ## Beklenen Frekanslar Tablosu Oluşturma
+```vba
+Function ctablo(gozlem As Range)
+  sa = gozlem.Rows.Count
+  su = gozlem.Columns.Count
+  ReDim bekle(sa-1,su-1)
+  With gozlem
+    For i = 1 To sa - 1
+      For j = 1 To su - 1
+        bekle(i-1,j-1)=.Cells(sa,j).Value*.Cells(i,su).Value/.Cells(sa,su).Value
+      Next j
+    Next i
+  End With
+  ctablo = bekle
+End Function
+```
+## Ki-Kare Test İstatistiği ve Olasılığını Hesaplama
+```vba
+Function kikare_testi(gozlem As Range)
+  sa = gozlem.Rows.Count
+  su = gozlem.Columns.Count
+  ReDim bekle(sa - 1, su - 1)
+  With gozlem
+    For i = 1 To sa - 1
+      For j = 1 To su - 1
+        bekle(i - 1, j - 1) = .Cells(sa, j).Value * .Cells(i, su).Value / .Cells(sa, su).Value
+      Next j
+    Next i
+  End With
+  With gozlem
+    For i = 1 To sa - 1
+      For j = 1 To su - 1
+        kikare = kikare + (bekle(i - 1, j - 1) - .Cells(i, j).Value) ^ 2 / bekle(i - 1, j - 1)
+      Next j
+    Next i
+  End With
+  Dim ki(2) As Single
+  ki(0) = kikare: ki(1) = 1 - WorksheetFunction.ChiSq_Dist(kikare, (sa - 2) * (su - 2), True)
+  If Selection.Columns.Count = 2 Then
+    kikare_testi = ki
+  Else
+    kikare_testi = WorksheetFunction.Transpose(ki)
+  End If
+End Function
+```
 
