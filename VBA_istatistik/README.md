@@ -5,8 +5,7 @@ So, here, I have some simple code samples to calculate more easily in Excel.
 ## Some Central Tendency Measures
 This small function code can calculate arithmetic (metot=1 ,default) , geometric (2) and harmonic mean (3) for grouped frequency distribution entered  as  below in Excel spreadsheet. Of course all possible situations must be checked, this function do not have yet.
 
-![Deneme](../VBA_istatistik/grup_seri.PNG | width=100px)
- <img src="https://github.com/lterlemez/VBA_istatistik/grup_seri.png" width="100" height="100">
+<img src="https://github.com/lterlemez/lterlemez/blob/main/VBA_istatistik/grup_seri.PNG" width="200" height="100">
 
 ```vba
 Function GOrtalama(veri As Range, Optional metot As Integer = 1)
