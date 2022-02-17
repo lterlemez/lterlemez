@@ -40,6 +40,7 @@ End Function
 
 ## Raw Moments of a Distribution
 
+If series' column count is 1 then it is assumed as simple series, if it is 2 then is assumed as frequency ditribution series, and if it is 3 then is assumed as grouped frequency distribution series and otherwise en error message will be shown.
 
 <img src="https://github.com/lterlemez/lterlemez/blob/main/VBA_istatistik/moment_raw.png" width="400" >
 
