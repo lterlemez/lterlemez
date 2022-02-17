@@ -42,7 +42,7 @@ End Function
 
 
 ```vba
-Function raw_moment(seri As Range, Optional r As Integer = 1)
+Function moment_raw(seri As Range, Optional r As Integer = 1)
     Dim t As Single
     t = 0
     Select Case seri.Columns.Count
@@ -71,7 +71,7 @@ End Function
 
 This code is consist of conversition formulas from raw moments, but it will have classic formula calculations, too.
 ```vba
-Function cent_moment(moments As Range, Optional center As Boolean = False)
+Function moment_cent(moments As Range, Optional center As Boolean = False)
     'Not completely coded
     With moments
     Select Case center
