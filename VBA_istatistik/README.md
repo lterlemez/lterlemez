@@ -67,7 +67,7 @@ Function raw_moment(seri As Range, Optional r As Integer = 1)
     End Select
 End Function
 ```
-## Central Moments ıf a Distribution
+## Central Moments of a Distribution
 
 This code is consist of conversition formulas from raw moments, but it will have classic formula calculations, too.
 ```vba
