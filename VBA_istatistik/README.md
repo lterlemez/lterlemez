@@ -37,3 +37,61 @@ Function GOrtalama(veri As Range, Optional metot As Integer = 1)
     GOrtalama = ort
 End Function
 ```
+
+## Raw Moments of a Distribution
+
+
+```vba
+Function raw_moment(seri As Range, Optional r As Integer = 1)
+    Dim t As Single
+    t = 0
+    Select Case seri.Columns.Count
+        Case 1
+            For Each i In seri
+                t = t + i.Value ^ r
+            Next i
+            raw_moment = t / seri.Rows.Count
+        Case 2
+            For Each i In seri.Rows
+                t = t + (i.Columns(1).Value ^ r) * i.Columns(2).Value
+            Next i
+            raw_moment = t / WorksheetFunction.Sum(seri.Columns(2))
+            
+        Case 3
+            For Each i In seri.Rows
+                t = t + WorksheetFunction.Average(i.Columns(1).Value, i.Columns(2).Value) ^ r * i.Columns(3).Value
+            Next i
+            raw_moment = t / WorksheetFunction.Sum(seri.Columns(3))
+        Case Else
+            raw_moment = "#N/A!"
+    End Select
+End Function
+```
+## Central Moments ıf a Distribution
+
+This code is consist of conversition formulas from raw moments, but it will have classic formula calculations, too.
+```vba
+Function cent_moment(moments As Range, Optional center As Boolean = False)
+    'Not completely coded
+    With moments
+    Select Case center
+        Case False
+            Select Case .Rows.Count
+                Case 2
+                    cent_moment = .Rows(2).Value - .Rows(1).Value ^ 2
+                Case 3
+                    cent_moment = .Rows(3).Value - 3 * .Rows(1).Value * .Rows(2).Value + 2 * .Rows(1) ^ 3
+                Case 4
+                    cent_moment = .Rows(4).Value - 4 * .Rows(1).Value * .Rows(3).Value + 6 * .Rows(1).Value ^ 2 * .Rows(2).Value - 3 * .Rows(1).Value ^ 4
+                Case Else
+                    cent_moment = "#N/A!"
+            End Select
+        Case True
+        ' Will be coded accordingly
+        Case Else
+            cent_moment = "#N/A!"
+    End Select
+End Function
+```
+
+
