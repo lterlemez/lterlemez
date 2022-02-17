@@ -5,7 +5,7 @@ So, here, I have some simple code samples to calculate more easily in Excel.
 ## Some Central Tendency Measures
 This small function code can calculate arithmetic (metot=1 ,default) , geometric (2) and harmonic mean (3) for grouped frequency distribution entered  as  below in Excel spreadsheet. Of course all possible situations must be checked, this function do not have yet.
 
-<img src="https://github.com/lterlemez/lterlemez/blob/main/VBA_istatistik/grup_seri.PNG" width="200" height="100">
+<img src="https://github.com/lterlemez/lterlemez/blob/main/VBA_istatistik/grup_seri.PNG" width="400">
 
 ```vba
 Function GOrtalama(veri As Range, Optional metot As Integer = 1)
@@ -41,6 +41,8 @@ End Function
 ## Raw Moments of a Distribution
 
 
+<img src="https://github.com/lterlemez/lterlemez/blob/main/VBA_istatistik/moment_raw.png" width="400" >
+
 ```vba
 Function moment_raw(seri As Range, Optional r As Integer = 1)
     Dim t As Single
@@ -68,8 +70,8 @@ Function moment_raw(seri As Range, Optional r As Integer = 1)
 End Function
 ```
 ## Central Moments of a Distribution
-
 This code is consist of conversition formulas from raw moments, but it will have classic formula calculations, too.
+<img src="https://github.com/lterlemez/lterlemez/blob/main/VBA_istatistik/moment_cent.png" width="400" >
 ```vba
 Function moment_cent(moments As Range, Optional center As Boolean = False)
     'Not completely coded
