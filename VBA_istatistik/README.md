@@ -97,7 +97,10 @@ Function moment_cent(moments As Range, Optional convert As Boolean = True, Optio
                         Next i
                         moment_cent = t / .Rows.Count
                     Case 2
-                    
+                        For Each i In moments
+                            t = t + (i.Columns(1).Value - mean) ^ r * i.Columns(2).Value
+                        Next i
+                        moment_cent = t / WorksheetFunction.Sum(.Columns(2))
                     Case 3
                     
                     Case Else
