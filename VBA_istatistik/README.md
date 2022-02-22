@@ -74,26 +74,36 @@ End Function
 This code is consist of conversition formulas from raw moments, but it will have classic formula calculations, too.
 <img src="https://github.com/lterlemez/lterlemez/blob/main/VBA_istatistik/moment_cent.png" width="400" >
 ```vba
-Function moment_cent(moments As Range, Optional center As Boolean = False)
-    'Not completely coded
+Function moment_cent(moments As Range, Optional convert As Boolean = True, Optional r As Integer = 1, Optional mean As Single = 0)
+    Dim t As Single
+    t = 0
     With moments
-    Select Case center
-        Case False
-            Select Case .Rows.Count
-                Case 2
-                    moment_cent = .Rows(2).Value - .Rows(1).Value ^ 2
-                Case 3
-                    moment_cent = .Rows(3).Value - 3 * .Rows(1).Value * .Rows(2).Value + 2 * .Rows(1) ^ 3
-                Case 4
-                    moment_cent = .Rows(4).Value - 4 * .Rows(1).Value * .Rows(3).Value + 6 * .Rows(1).Value ^ 2 * .Rows(2).Value - 3 * .Rows(1).Value ^ 4
-                Case Else
-                    moment_cent = "#N/A!"
-            End Select
-        Case True
-        ' Will be coded accordingly
-        Case Else
-            moment_cent = "#N/A!"
-    End Select
+        Debug.Print "Row Count: " & .Rows.Count
+        Select Case convert
+            Case True
+                For j = 0 To .Rows.Count - 1
+                    t = t + WorksheetFunction.Combin(.Rows.Count - 1, j) * (-1) ^ (.Rows.Count - 1 - j) * .Rows(j + 1) * .Rows(2) ^ (.Rows.Count - 1 - j)
+                    Debug.Print "j= " & .Rows(j + 1) & " " & t
+                Next j
+                moment_cent = t
+            Case False
+                Select Case .Columns.Count
+                    Case 1
+                        For Each i In moments
+                            t = t + (i.Value - mean) ^ r
+                        Next i
+                        moment_cent = t / .Rows.Count
+                    Case 2
+                    
+                    Case 3
+                    
+                    Case Else
+                        moment_cent = "#N/A!"
+                End Select
+            Case Else
+                moment_cent = "#N/A!"
+        End Select
+    End With
 End Function
 ```
 
