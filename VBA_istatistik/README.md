@@ -73,6 +73,9 @@ End Function
 ## Central Moments of a Distribution
 This code is consist of conversition formulas from raw moments, but it will have classic formula calculations, too.
 <img src="https://github.com/lterlemez/lterlemez/blob/main/VBA_istatistik/moment_cent.png" width="400" >
+<img src="https://github.com/lterlemez/lterlemez/blob/main/VBA_istatistik/moment_cent_org.png" width="400" >
+
+
 ```vba
 Function moment_cent(moments As Range, Optional convert As Boolean = True, Optional r As Integer = 1, Optional mean As Single = 0)
     Dim t As Single
