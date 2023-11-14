@@ -1,6 +1,6 @@
 Merhaba,
 
-Orta karar bir kodlayıcıyım. Burada, aklıma gelen, bazı proje olabilecek düşüncelerimi dökmeyi düşünüyorum. Umarım faydalı olurlar.
+<div style="text-align:justify;">Orta karar bir kodlayıcıyım. Burada, aklıma gelen, bazı proje olabilecek düşüncelerimi dökmeyi düşünüyorum. Umarım faydalı olurlar.</div>
 
 Hi,
 
